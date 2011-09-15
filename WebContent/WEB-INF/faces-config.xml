@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_1_2.xsd"
+	version="1.2">
+
+	<application>
+		<locale-config>
+			<default-locale>de</default-locale>
+		</locale-config>
+		<message-bundle>de.fmi.framework.web.ui.messages</message-bundle>
+	</application>
+
+	<managed-bean>
+		<managed-bean-name>CheckValidUser</managed-bean-name>
+		<managed-bean-class>de.fmi.framework.core.security.ui.CheckValidUser</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+	<managed-bean>
+		<managed-bean-name>temperatureConvertor</managed-bean-name>
+		<managed-bean-class>de.vogella.jsf.first.model.TemperatureConvertor</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
+	
+	<navigation-rule>
+		<from-view-id>/pages/login.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>reg</from-outcome>
+			<to-view-id>/pages/registration.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/pages/successLogin.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>failure</from-outcome>
+			<to-view-id>/pages/login.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/pages/registration.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/pages/welcome.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>failure</from-outcome>
+			<to-view-id>/pages/registration.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+</faces-config>
